@@ -6,6 +6,12 @@ form.addEventListener("submit", (event) => {
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
 
+  // validation for when values are missing
+  if (!dividend || !divider) {
+    result.innerHTML = "Division can't be done. Both inputs are required."
+    return;
+  }
+
   // This will divide and round out the result if it's a decimal
   result.innerText = Math.floor(dividend / divider);
 });
